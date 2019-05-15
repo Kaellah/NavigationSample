@@ -11,8 +11,4 @@ class HomeFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return View.inflate(context, R.layout.fragment_home, null)
     }
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
 }
