@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/nav_home"
-        app:startDestination="@+id/homeFragment">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_home"
+            app:startDestination="@id/homeFragment">
+
     <fragment
             android:id="@+id/homeFragment"
             android:name="com.kaellah.navigationsample.HomeFragment"
-            android:label="HomeFragment">
+            android:label="HomeFragment"
+            tools:layout="@layout/fragment_home">
         <action
                 android:id="@+id/action_homeFragment_to_profileFragment"
-                app:destination="@+id/profileFragment"
+                app:destination="@id/profileFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" />
-        <action
-                android:id="@+id/action_homeFragment_to_chatFragment"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/action_homeFragment_to_chatFragment"
                 app:destination="@id/chatFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-            android:id="@+id/profileFragment"
-            android:name="com.kaellah.navigationsample.ProfileFragment"
-            android:label="ProfileFragment" />
-    <fragment
-            android:id="@+id/chatFragment"
-            android:name="com.kaellah.navigationsample.ChatFragment"
-            android:label="ChatFragment">
+                app:popExitAnim="@anim/slide_out_right"/>
         <action
-                android:id="@+id/action_chatFragment_to_chatListFragment"
-                app:destination="@id/chatListFragment"
+                android:id="@+id/action_homeFragment_to_settingsFragment"
+                app:destination="@id/settingsFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"
-                app:popUpTo="@id/homeFragment"/>
+                app:popUpToInclusive="false"/>
     </fragment>
     <fragment
-            android:id="@+id/chatListFragment"
-            android:name="com.kaellah.navigationsample.ChatListFragment"
-            android:label="ChatListFragment" />
+            android:id="@+id/profileFragment"
+            android:name="com.kaellah.navigationsample.ProfileFragment"
+            android:label="ProfileFragment"
+            tools:layout="@layout/fragment_profile">
+        <argument
+                android:name="userName"
+                app:argType="string"/>
+        <deepLink app:uri="www.example.com/user/{userName}" />
+    </fragment>
+    <fragment
+            android:id="@+id/chatFragment"
+            android:name="com.kaellah.navigationsample.ChatFragment"
+            android:label="ChatFragment"
+            tools:layout="@layout/fragment_chat"/>
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.kaellah.navigationsample.SettingsFragment"
+            android:label="SettingsFragment"
+            tools:layout="@layout/fragment_settings">
+        <action
+                android:id="@+id/action_settingsFragment_to_profileFragment"
+                app:destination="@id/profileFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_left"
+                app:popUpTo="@+id/homeFragment"/>
+    </fragment>
 </navigation>
